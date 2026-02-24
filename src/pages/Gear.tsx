@@ -1,4 +1,5 @@
 import { BOOKING_URL, GEAR_CATEGORIES } from '../data/content';
+import { trackBookingClick } from '../utils/analytics';
 
 export default function Gear() {
   return (
@@ -35,6 +36,7 @@ export default function Gear() {
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackBookingClick(`gear_${cat.name.toLowerCase().replace(/\s+/g, '_')}`)}
                   className="inline-block bg-coral hover:bg-coral-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full no-underline transition-colors"
                 >
                   Book {cat.name}
@@ -52,6 +54,7 @@ export default function Gear() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackBookingClick('gear_bottom_cta')}
               className="inline-block bg-coral hover:bg-coral-dark text-white font-semibold px-6 py-3 rounded-full no-underline transition-colors"
             >
               View Full Inventory

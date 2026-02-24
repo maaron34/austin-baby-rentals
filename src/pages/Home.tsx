@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Star, Truck, ShieldCheck, Clock } from 'lucide-react';
 import { BOOKING_URL, STATS, GEAR_CATEGORIES, REVIEWS } from '../data/content';
+import { trackBookingClick } from '../utils/analytics';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackBookingClick('hero_cta')}
               className="bg-coral hover:bg-coral-dark text-white font-semibold px-8 py-3.5 rounded-full text-lg no-underline transition-colors"
             >
               Book Your Gear
@@ -165,6 +167,7 @@ export default function Home() {
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackBookingClick('home_bottom_cta')}
             className="inline-block bg-coral hover:bg-coral-dark text-white font-semibold px-8 py-3.5 rounded-full text-lg no-underline transition-colors"
           >
             Book Your Gear Now

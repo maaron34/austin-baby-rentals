@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { BOOKING_URL } from '../data/content';
+import { trackBookingClick } from '../utils/analytics';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -9,6 +10,7 @@ const navLinks = [
   { to: '/how-it-works', label: 'How It Works' },
   { to: '/reviews', label: 'Reviews' },
   { to: '/austin-guide', label: 'Austin Guide' },
+  { to: '/blog', label: 'Blog' },
 ];
 
 export default function Header() {
@@ -41,6 +43,7 @@ export default function Header() {
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackBookingClick('header_cta')}
             className="bg-coral hover:bg-coral-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full no-underline transition-colors"
           >
             Book Now
@@ -78,6 +81,7 @@ export default function Header() {
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackBookingClick('header_mobile_cta')}
             className="block mt-3 bg-coral text-white text-sm font-semibold px-5 py-3 rounded-full no-underline text-center"
           >
             Book Now

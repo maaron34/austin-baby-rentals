@@ -1,7 +1,21 @@
 import { Search, Truck, CheckCircle } from 'lucide-react';
 import { BOOKING_URL, HOW_IT_WORKS_STEPS, FAQ_ITEMS } from '../data/content';
+import { trackBookingClick } from '../utils/analytics';
 
 const STEP_ICONS = [Search, Truck, CheckCircle];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function HowItWorks() {
   return (
@@ -41,6 +55,7 @@ export default function HowItWorks() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackBookingClick('how_it_works_cta')}
               className="inline-block bg-coral hover:bg-coral-dark text-white font-semibold px-8 py-3.5 rounded-full text-lg no-underline transition-colors"
             >
               Book Your Gear Now
@@ -48,6 +63,12 @@ export default function HowItWorks() {
           </div>
         </div>
       </section>
+
+      {/* FAQ JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
       {/* FAQ */}
       <section className="bg-warm-gray py-16 px-4">

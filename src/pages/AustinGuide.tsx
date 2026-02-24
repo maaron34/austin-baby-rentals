@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { BOOKING_URL } from '../data/content';
+import { trackBookingClick } from '../utils/analytics';
 
 export default function AustinGuide() {
   return (
@@ -45,58 +47,65 @@ export default function AustinGuide() {
 
             <h3 className="text-xl font-bold text-text mb-3">Best Austin Neighborhoods for Families</h3>
             <div className="space-y-4 mb-6">
-              <div className="bg-warm-gray rounded-lg p-4">
+              <Link to="/westlake-hills-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">Westlake Hills / Rollingwood</h4>
                 <p className="text-text-light text-sm mt-1">
                   Beautiful Hill Country homes, top-rated Eanes ISD schools, and a quiet upscale feel
                   just minutes from downtown. Popular for luxury vacation rentals and visiting grandparents.
                   We deliver throughout Westlake and Rollingwood.
                 </p>
-              </div>
-              <div className="bg-warm-gray rounded-lg p-4">
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
+              <Link to="/tarrytown-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">Tarrytown / Clarksville / Pemberton Heights</h4>
                 <p className="text-text-light text-sm mt-1">
                   Classic central Austin neighborhoods with tree-lined streets, walkable to downtown and
                   Lake Austin. Gorgeous historic homes and high-end Airbnbs. A favorite for families
                   who want the best of Austin within walking distance.
                 </p>
-              </div>
-              <div className="bg-warm-gray rounded-lg p-4">
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
+              <Link to="/south-austin-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">South Austin / Zilker / Barton Hills</h4>
                 <p className="text-text-light text-sm mt-1">
                   Close to Barton Springs, Zilker Park, and South Lamar restaurants. Lots of family-friendly
                   Airbnbs with yards. Our home base -- free delivery here.
                 </p>
-              </div>
-              <div className="bg-warm-gray rounded-lg p-4">
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
+              <Link to="/south-congress-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">South Congress / Bouldin Creek / Travis Heights</h4>
                 <p className="text-text-light text-sm mt-1">
                   Walkable, great food, and the famous SoCo shopping strip. Bouldin Creek and Travis Heights
                   have charming vacation rentals. Book early -- it fills up fast during SXSW and ACL.
                 </p>
-              </div>
-              <div className="bg-warm-gray rounded-lg p-4">
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
+              <Link to="/downtown-austin-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">Downtown / Rainey Street</h4>
                 <p className="text-text-light text-sm mt-1">
                   Central location, walkable to most attractions. Great for families who want
                   to be in the middle of the action. Hotel delivery is easy here.
                 </p>
-              </div>
-              <div className="bg-warm-gray rounded-lg p-4">
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
+              <Link to="/east-austin-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">East Austin</h4>
                 <p className="text-text-light text-sm mt-1">
                   Trendy food scene, breweries with patios (kid-friendly!), and a more local vibe.
                   Lots of vacation rental options.
                 </p>
-              </div>
-              <div className="bg-warm-gray rounded-lg p-4">
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
+              <Link to="/bee-cave-baby-gear-rental" className="block bg-warm-gray rounded-lg p-4 no-underline hover:shadow-md transition-shadow">
                 <h4 className="font-semibold text-text">Bee Cave / Barton Creek / Oak Hill</h4>
                 <p className="text-text-light text-sm mt-1">
                   Hill Country feel just minutes from the city. Barton Creek has resort-style living,
                   Bee Cave has upscale shopping and dining, and Oak Hill is a quiet family hub.
                   We deliver throughout this area.
                 </p>
-              </div>
+                <span className="text-coral text-sm font-medium mt-2 inline-block">Learn more &rarr;</span>
+              </Link>
             </div>
 
             <h3 className="text-xl font-bold text-text mb-3">Austin Events: What to Know as a Parent</h3>
@@ -151,6 +160,7 @@ export default function AustinGuide() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackBookingClick('austin_guide_cta')}
               className="inline-block bg-coral hover:bg-coral-dark text-white font-semibold px-6 py-3 rounded-full no-underline transition-colors"
             >
               Book Your Gear

@@ -1,5 +1,6 @@
 import { Star } from 'lucide-react';
 import { BOOKING_URL, STATS, REVIEWS } from '../data/content';
+import { trackBookingClick } from '../utils/analytics';
 
 export default function Reviews() {
   return (
@@ -57,6 +58,7 @@ export default function Reviews() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackBookingClick('reviews_babyquip_cta')}
               className="inline-block bg-coral hover:bg-coral-dark text-white font-semibold px-6 py-3 rounded-full no-underline transition-colors"
             >
               View on BabyQuip
