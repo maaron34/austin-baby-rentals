@@ -1,8 +1,40 @@
 import { Star } from 'lucide-react';
+import { useEffect } from 'react';
 import { BOOKING_URL, STATS, REVIEWS } from '../data/content';
 import { trackBookingClick } from '../utils/analytics';
 
 export default function Reviews() {
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: 'Austin Baby Rentals',
+      url: 'https://austinbabyrentals.com',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: STATS.rating,
+        reviewCount: STATS.reviews,
+        bestRating: '5',
+      },
+      review: REVIEWS.map((r) => ({
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: r.rating,
+          bestRating: 5,
+        },
+        author: { '@type': 'Person', name: r.name },
+        datePublished: r.date,
+        reviewBody: r.text,
+      })),
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+    return () => { document.head.removeChild(script); };
+  }, []);
+
   return (
     <>
       <section className="bg-sage-light py-12 px-4">
